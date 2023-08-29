@@ -1,19 +1,13 @@
-import { useEffect } from "react";
-import Cookies from "cookies";
+import { NextResponse } from "next/server";
 
-export default function SetCookie() {
-  const handleClick = () => {
-    document.cookie = "theme=dark; path=/;";
-  };
+export async function getServerHandler() {
+  return new NextResponse().cookie("theme", "dark");
+}
 
+export default function SetCookiePage() {
   return (
     <div className="p-4">
-      <button
-        className="bg-blue-500 text-white px-4 py-2"
-        onClick={handleClick}
-      >
-        Set Dark Theme
-      </button>
+      <h1 className="text-xl">Cookie has been set to theme: dark</h1>
     </div>
   );
 }
